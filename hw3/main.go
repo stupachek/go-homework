@@ -17,7 +17,7 @@ func main() {
 	fmt.Printf("1. Скільки грошей треба витратити, щоб купити %d яблук та %d груш?\n", appleCount, pearCount)
 	priceOfApples := float64(appleCount) * priceApple
 	priceOfPears := float64(pearCount * pricePear)
-	fmt.Printf("\t- Вони коштують %v грн.\n", priceOfApples+priceOfPears)
+	fmt.Printf("\t- Вони коштують %vгрн.\n", priceOfApples+priceOfPears)
 	fmt.Println("2. Скільки груш ми можемо купити?")
 	pearsCanBuy := math.Floor(yourMoney / pricePear)
 	fmt.Printf("\t- Ми можемо купити %v.\n", pearsCanBuy)
