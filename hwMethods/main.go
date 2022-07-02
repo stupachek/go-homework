@@ -24,6 +24,15 @@ func (rectangle Rectangle) Drow(position bool) {
 
 }
 
+func (rectangle *Rectangle) ChangeSize(multiplier int) {
+	rectangle.a *= multiplier
+	rectangle.b *= multiplier
+}
+
+func (rectangle Rectangle) GetSquare() int {
+	return rectangle.a * rectangle.b
+}
+
 func MaxMin(a, b int) (max, min int) {
 	if a > b {
 		return a, b
@@ -38,4 +47,6 @@ func main() {
 		b: 5,
 	}
 	rec.Drow(false)
+	rec.ChangeSize(2)
+	rec.Drow(true)
 }
