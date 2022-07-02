@@ -52,5 +52,12 @@ func main() {
 	}
 	rec.Drow(false)
 	rec.ChangeSize(2)
+	fmt.Println("_______________________")
 	rec.Drow(true)
+	fmt.Println("_______________________")
+	rec2 := Rectangle{
+		a: 2,
+		b: 4,
+	}
+	fmt.Printf("Is rec > rec2? %v", rec.IsBiggerArea(rec2))
 }
