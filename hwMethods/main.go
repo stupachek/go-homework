@@ -29,7 +29,11 @@ func (rectangle *Rectangle) ChangeSize(multiplier int) {
 	rectangle.b *= multiplier
 }
 
-func (rectangle Rectangle) GetSquare() int {
+func (rectangle Rectangle) IsBiggerArea(compared Rectangle) bool {
+	return rectangle.GetArea() > compared.GetArea()
+}
+
+func (rectangle Rectangle) GetArea() int {
 	return rectangle.a * rectangle.b
 }
 
