@@ -6,6 +6,10 @@ type Rectangle struct {
 	a, b int
 }
 
+type Square struct {
+	a int
+}
+
 // position == true drow horizontally or position == false drow vertically
 func (rectangle Rectangle) Drow(position bool) {
 	var width, height int
@@ -37,6 +41,18 @@ func (rectangle Rectangle) GetArea() int {
 	return rectangle.a * rectangle.b
 }
 
+func (rectangle Rectangle) SquaresContain(square Square) int {
+	squaresContain := 0
+	for rectangle.a >= square.a {
+		rectangle.a -= square.a
+		for rectangle.b >= square.a {
+			rectangle.b -= square.a
+			squaresContain++
+		}
+	}
+	return squaresContain
+}
+
 func MaxMin(a, b int) (max, min int) {
 	if a > b {
 		return a, b
@@ -53,11 +69,25 @@ func main() {
 	rec.Drow(false)
 	rec.ChangeSize(2)
 	fmt.Println("_______________________")
+
 	rec.Drow(true)
 	fmt.Println("_______________________")
+
 	rec2 := Rectangle{
 		a: 2,
 		b: 4,
 	}
-	fmt.Printf("Is rec > rec2? %v", rec.IsBiggerArea(rec2))
+	fmt.Printf("Is rec > rec2? %v\n", rec.IsBiggerArea(rec2))
+	fmt.Println("_______________________")
+
+	square := Square{
+		a: 2,
+	}
+	fmt.Printf("How many squares in rec2? - %v\n", rec2.SquaresContain(square))
+	fmt.Println("_______________________")
+
+	square2 := Square{
+		a: 3,
+	}
+	fmt.Printf("How many squares2 in rec? - %v\n", rec.SquaresContain(square2))
 }
