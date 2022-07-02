@@ -2,6 +2,9 @@ package main
 
 import "fmt"
 
+const ageLimit = 20
+const wantedName = "John"
+
 type User struct {
 	id        string
 	email     string
@@ -16,7 +19,6 @@ func (u User) fullName() string {
 }
 
 func main() {
-	users := make([]User, 0)
 	user1 := User{
 		id:        "1234",
 		email:     "ababab@gmai.com",
@@ -25,6 +27,7 @@ func main() {
 		nick:      "ababab",
 		age:       23,
 	}
+
 	user2 := User{
 		id:        "12sdvf34",
 		email:     "op@gmai.com",
@@ -33,6 +36,7 @@ func main() {
 		nick:      "qwerty",
 		age:       27,
 	}
+
 	user3 := User{
 		id:        "1243yu4",
 		email:     "fhn@gmai.com",
@@ -41,6 +45,7 @@ func main() {
 		nick:      "qwerty123",
 		age:       17,
 	}
+
 	user4 := User{
 		id:        "qwafsd65",
 		email:     "@gmai.com",
@@ -49,9 +54,11 @@ func main() {
 		nick:      "user2001",
 		age:       21,
 	}
-	users = append(users, user1, user2, user3, user4)
+
+	users := []User{user1, user2, user3, user4}
+
 	for _, user := range users {
-		if user.age > 20 && user.firstName == "John" {
+		if user.age > ageLimit && user.firstName == wantedName {
 			fmt.Printf("Full name : %v, nickname: %v \n", user.fullName(), user.nick)
 		}
 	}
