@@ -3,7 +3,6 @@ package main
 import "fmt"
 
 const (
-	month   = 30
 	dogFood = 2
 	catFood = 7
 	cowFood = 25
@@ -22,7 +21,7 @@ func (d Dog) String() string {
 }
 
 func (d Dog) getFoodMonth() float64 {
-	return dogFood * month
+	return d.getWeight() / dogFood
 }
 
 type Cat struct {
@@ -38,7 +37,7 @@ func (c Cat) String() string {
 }
 
 func (c Cat) getFoodMonth() float64 {
-	return catFood * month
+	return c.getWeight() / catFood
 }
 
 type Cow struct {
@@ -54,7 +53,7 @@ func (c Cow) String() string {
 }
 
 func (c Cow) getFoodMonth() float64 {
-	return cowFood * month
+	return c.getWeight() / cowFood
 }
 
 type Animal interface {
