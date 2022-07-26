@@ -16,28 +16,23 @@ func main() {
 	}
 
 	// Ваша реалізація
-
-	ch := make(chan []int)
-	go write(ch, n)
-	res := make([]int, 0)
-	for v := range ch {
-		res = append(res, sum(v))
-	}
-	fmt.Printf("result: %v", sum(res))
-
-}
-
-func write(ch chan []int, n [][]int) {
+	ch := make(chan int)
 	for _, arr := range n {
-		ch <- arr
+		go sum(arr, ch)
 	}
-	close(ch)
+	res := 0
+	for i := 0; i < len(n); i++ {
+		res += <-ch
+	}
+
+	fmt.Printf("result: %v", res)
+
 }
 
-func sum(arr []int) int {
+func sum(arr []int, ch chan int) {
 	result := 0
 	for _, i := range arr {
 		result += i
 	}
-	return result
+	ch <- result
 }
